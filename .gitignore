@@ -1,0 +1,48 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Archivos de configuración de entorno
+.env
+*.env
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de logs y bases temporales
+*.log
+*.sqlite3
+
+# Archivos de Jupyter Notebooks temporales
+.ipynb_checkpoints/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de VSCode (opcional)
+.vscode/
+
+# Archivos de PyCharm (opcional)
+.idea/
+
+# Modelos grandes o archivos pesados
+*.safetensors
+*.bin
+*.pt
+
+# Archivos de subida de HF (opcional)
+*.h5
+.gitattributes
+
+# Firebase
+*.json
+
+# Notebooks con secretos (opcional)
+src/notebooks/
+
+# Tokens en archivos .env
+.env
