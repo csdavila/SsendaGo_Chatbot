@@ -1,8 +1,6 @@
 import os
 import unicodedata
 import requests
-import unsloth 
-from unsloth import FastLanguageModel
 import firebase_admin
 from firebase_admin import credentials, firestore
 from transformers import AutoTokenizer, AutoModelForCausalLM
