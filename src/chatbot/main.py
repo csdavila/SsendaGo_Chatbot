@@ -22,27 +22,15 @@ if not firebase_admin._apps:
 db = firestore.client()
 
 # Cargar modelo de Hugging Face
-# model_name = "csdavila/Llama-3.2.B.S2"
-# tokenizer  = AutoTokenizer.from_pretrained(model_name)
-# device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# model      = AutoModelForCausalLM.from_pretrained(
-#     model_name,
-#     device_map="auto",
-#     low_cpu_mem_usage=True,
-#     torch_dtype=torch.float16,
-# ).to(device)
-
-model_name = "csdavila/Llama-3.2.B.S3"
-
-model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name=model_name,
-    max_seq_length=2048,
-    dtype=None,
-    load_in_4bit=False,
-)
-model = FastLanguageModel.for_inference(model)
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model.to(device)
+model_name = "NadiaLiz/Llama-3.2"
+tokenizer  = AutoTokenizer.from_pretrained(model_name)
+device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model      = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto",
+    low_cpu_mem_usage=True,
+    torch_dtype=torch.float16,
+).to(device)
 
 def obtener_contexto():
     return (
