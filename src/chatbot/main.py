@@ -19,14 +19,14 @@ if not firebase_admin._apps:
 db = firestore.client()
 
 # Cargar modelo de Hugging Face
-model_name = "csdavila/Llama-3.2.B.S3"
+model_name = "csdavila/Llama-3.2.B.S2"
 tokenizer  = AutoTokenizer.from_pretrained(model_name)
 device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model      = AutoModelForCausalLM.from_pretrained(
     model_name,
     device_map="auto",
     low_cpu_mem_usage=True,
-    torch_dtype=torch.float16
+    torch_dtype=torch.float32
 ).to(device)
 
 
