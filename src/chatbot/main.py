@@ -38,7 +38,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=model_name,
     max_seq_length=2048,
     dtype=None,
-    load_in_4bit=True,
+    load_in_4bit=False,
 )
 model = FastLanguageModel.for_inference(model)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
