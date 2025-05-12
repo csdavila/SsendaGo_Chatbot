@@ -1,12 +1,14 @@
 import os
 import unicodedata
 import requests
+import unsloth 
+from unsloth import FastLanguageModel
 import firebase_admin
 from firebase_admin import credentials, firestore
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from flask import Flask, request
 import torch
-from unsloth import FastLanguageModel
+
 
 VERIFY_TOKEN = os.getenv("VERIFY_TOKEN", "mi_token_unico_12345")
 PHONE_ID     = "668397103018966"
