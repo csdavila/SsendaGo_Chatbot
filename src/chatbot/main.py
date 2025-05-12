@@ -26,7 +26,8 @@ model      = AutoModelForCausalLM.from_pretrained(
     model_name,
     device_map="auto",
     low_cpu_mem_usage=True,
-    torch_dtype=torch.float32
+    torch_dtype=torch.float16,
+    use_bnb=False 
 ).to(device)
 
 
