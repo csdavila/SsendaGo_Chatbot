@@ -4,3 +4,4 @@ requests
 bitsandbytes
 firebase_admin
 torch
+accelerate
