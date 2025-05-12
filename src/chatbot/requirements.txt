@@ -5,3 +5,4 @@ bitsandbytes
 firebase_admin
 torch
 accelerate
+unsloth

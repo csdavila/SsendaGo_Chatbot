@@ -6,6 +6,7 @@ from firebase_admin import credentials, firestore
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from flask import Flask, request
 import torch
+from unsloth import FastLanguageModel
 
 VERIFY_TOKEN = os.getenv("VERIFY_TOKEN", "mi_token_unico_12345")
 PHONE_ID     = "668397103018966"
@@ -19,16 +20,27 @@ if not firebase_admin._apps:
 db = firestore.client()
 
 # Cargar modelo de Hugging Face
-model_name = "csdavila/Llama-3.2.B.S1"
-tokenizer  = AutoTokenizer.from_pretrained(model_name)
-device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model      = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    device_map="auto",
-    low_cpu_mem_usage=True,
-    torch_dtype=torch.float16,
-).to(device)
+# model_name = "csdavila/Llama-3.2.B.S2"
+# tokenizer  = AutoTokenizer.from_pretrained(model_name)
+# device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# model      = AutoModelForCausalLM.from_pretrained(
+#     model_name,
+#     device_map="auto",
+#     low_cpu_mem_usage=True,
+#     torch_dtype=torch.float16,
+# ).to(device)
 
+model_name = "csdavila/Llama-3.2.B.S3"
+
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name=model_name,
+    max_seq_length=2048,
+    dtype=None,
+    load_in_4bit=True,
+)
+model = FastLanguageModel.for_inference(model)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
 
 def obtener_contexto():
     return (
